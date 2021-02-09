@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 const orderSummary = (props) => {
   const ingredientSummary = Object.keys(props.ingredients).map(
@@ -16,6 +17,10 @@ const orderSummary = (props) => {
       <p>Proceed to order?</p>
     </Fragment>
   );
+};
+
+orderSummary.propTypes = {
+  ingredients: PropTypes.object.isRequired,
 };
 
 export default orderSummary;

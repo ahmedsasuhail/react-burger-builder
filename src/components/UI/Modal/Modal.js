@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './Modal.module.css';
 import Backdrop from '../Backdrop/Backdrop';
 
-const Modal = (props) => {
+const modal = (props) => {
   return (
     <Fragment>
       <Backdrop show={props.show} changed={props.cancelled} />
@@ -19,4 +20,10 @@ const Modal = (props) => {
   );
 };
 
-export default Modal;
+modal.propTypes = {
+  show: PropTypes.bool.isRequired,
+  cancelled: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
+export default modal;
