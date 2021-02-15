@@ -5,11 +5,12 @@ import Button from '../../UI/Button/Button';
 
 const orderSummary = (props) => {
   const ingredientSummary = Object.keys(props.ingredients).map(
-    (ingredientKey) => (
-      <li key={ingredientKey}>
-        <strong>{ingredientKey}</strong>: {props.ingredients[ingredientKey]}
-      </li>
-    )
+    (ingredientKey) =>
+      props.ingredients[ingredientKey] !== 0 && (
+        <li key={ingredientKey}>
+          <strong>{ingredientKey}</strong>: {props.ingredients[ingredientKey]}
+        </li>
+      )
   );
   return (
     <Fragment>

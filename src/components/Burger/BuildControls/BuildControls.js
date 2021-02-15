@@ -43,6 +43,7 @@ buildControls.propTypes = {
   ingredientsAdded: PropTypes.func.isRequired,
   ingredientsRemoved: PropTypes.func.isRequired,
   disabled: PropTypes.object.isRequired,
+  purchasable: PropTypes.bool.isRequired,
   ordered: PropTypes.func.isRequired,
 };
 

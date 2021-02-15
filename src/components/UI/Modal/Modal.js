@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import classes from './Modal.module.css';
@@ -26,4 +26,4 @@ modal.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default modal;
+export default memo(modal);
