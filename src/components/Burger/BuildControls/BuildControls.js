@@ -42,7 +42,7 @@ buildControls.propTypes = {
   price: PropTypes.number.isRequired,
   ingredientsAdded: PropTypes.func.isRequired,
   ingredientsRemoved: PropTypes.func.isRequired,
-  disabled: PropTypes.bool.isRequired,
+  disabled: PropTypes.object.isRequired,
   ordered: PropTypes.func.isRequired,
 };
 

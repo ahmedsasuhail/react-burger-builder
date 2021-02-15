@@ -6,7 +6,7 @@ import Button from '../../UI/Button/Button';
 const orderSummary = (props) => {
   const ingredientSummary = Object.keys(props.ingredients).map(
     (ingredientKey) => (
-      <li>
+      <li key={ingredientKey}>
         <strong>{ingredientKey}</strong>: {props.ingredients[ingredientKey]}
       </li>
     )
@@ -34,7 +34,7 @@ orderSummary.propTypes = {
   ingredients: PropTypes.object.isRequired,
   purchaseCancelled: PropTypes.func.isRequired,
   purchaseContinued: PropTypes.func.isRequired,
-  price: PropTypes.number.isRequired,
+  price: PropTypes.string.isRequired,
 };
 
 export default orderSummary;
