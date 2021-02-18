@@ -23,7 +23,7 @@ const modal = (props) => {
 modal.propTypes = {
   show: PropTypes.bool.isRequired,
   cancelled: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 export default memo(modal);
