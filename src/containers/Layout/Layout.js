@@ -1,5 +1,4 @@
 import React, { Fragment, Component } from 'react';
-import PropTypes from 'prop-types';
 
 import classes from './Layout.module.css';
 import Toolbar from '../../components/UI/Navigation/Toolbar/Toolbar';
@@ -31,9 +30,5 @@ class Layout extends Component {
     );
   }
 }
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default Layout;
