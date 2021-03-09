@@ -1,37 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Order from '../../components/Order/Order';
 import axios from '../../axios-orders';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+import * as actions from '../../store/actions';
+import Spinner from '../../components/UI/Spinner/Spinner';
 
 class Orders extends Component {
-  state = {
-    orders: [],
-    loading: true,
-  };
-
   componentDidMount() {
-    axios
-      .get('/orders.json')
-      .then((res) => {
-        const fetchedData = [];
-        for (let key in res.data) {
-          fetchedData.push({
-            ...res.data[key],
-            id: key,
-          });
-        }
-        this.setState({ loading: false, orders: fetchedData });
-      })
-      .catch((err) => {
-        this.setState({ loading: false });
-      });
+    this.props.fetchOrders();
   }
 
   render() {
-    return (
-      <div>
-        {this.state.orders.map((order) => {
+    let orders = <Spinner />;
+    if (!this.props.loading) {
+      orders =
+        this.props.orders &&
+        this.props.orders.map((order) => {
           return (
             <Order
               key={order.id}
@@ -39,10 +25,26 @@ class Orders extends Component {
               price={order.price}
             />
           );
-        })}
-      </div>
-    );
+        });
+    }
+    return <div>{orders}</div>;
   }
 }
 
-export default withErrorHandler(Orders, axios);
+const mapStateToProps = (state) => {
+  return {
+    orders: state.order.orders,
+    loading: state.order.loading,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchOrders: () => dispatch(actions.fetchOrders()),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withErrorHandler(Orders, axios));
