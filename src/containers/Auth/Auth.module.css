@@ -12,6 +12,10 @@
   color: #703b09;
 }
 
+.Auth p {
+  color: darkred;
+}
+
 @media (min-width: 600px) {
   .Auth {
     width: 500px;
